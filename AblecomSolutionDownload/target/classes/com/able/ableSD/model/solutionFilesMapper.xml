@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.able.ablsSD.model.solutionFilesMapper">
+
+
+	<select id="selectTypeIxSolution" resultType="SolutionFiles">
+		select FILE_SEQ,
+		FILE_NAME, FILE_PATH
+		FROM TB_SOLUTION_FILES
+		WHERE SOLUTION_CD = 'BA02'
+		AND F_USE = 'Y'
+		ORDER BY FILE_SEQ
+	</select>
+
+	<select id="selectSolution" parameterType="String"
+		resultType="SolutionFiles">
+		SELECT FILE_SEQ, FILE_NAME, b.CODE_DESC + FILE_PATH AS
+		FILE_PATH
+		FROM TB_SOLUTION_FILES a
+		INNER JOIN TB_CODE b ON a.SOLUTION_CD
+		= b.ACT_CODE AND b.PARENT_CODE =
+		'BA00'
+		WHERE SOLUTION_CD =
+		#{solutionCode}
+		AND F_USE = 'Y'
+		ORDER BY FILE_SEQ
+	</select>
+
+	<select id="countMaxLines" resultType="Integer">
+		SELECT COUNT(DISTINCT FILE_SEQ) AS count
+		FROM TB_SOLUTION_FILES
+		WHERE FILE_SEQ LIKE '10%'
+		UNION ALL
+		SELECT COUNT(DISTINCT FILE_SEQ) AS count
+		FROM TB_SOLUTION_FILES
+		WHERE FILE_SEQ LIKE '20%'
+		UNION ALL
+		SELECT COUNT(DISTINCT FILE_SEQ) AS count
+		FROM TB_SOLUTION_FILES
+		WHERE FILE_SEQ LIKE '30%';
+	</select>
+
+
+	<select id="countSection1Max" resultType="Integer">
+		SELECT COUNT(DISTINCT
+		FILE_SEQ)
+		FROM TB_SOLUTION_FILES
+		WHERE FILE_SEQ LIKE '10XX%';
+	</select>
+
+	<select id="countSection2Max" resultType="Integer">
+		SELECT COUNT(DISTINCT
+		FILE_SEQ)
+		FROM TB_SOLUTION_FILES
+		WHERE FILE_SEQ LIKE '20XX%';
+	</select>
+
+	<select id="countSection3Max" resultType="Integer">
+		SELECT COUNT(DISTINCT
+		FILE_SEQ)
+		FROM TB_SOLUTION_FILES
+		WHERE FILE_SEQ LIKE '30XX%';
+	</select>
+	<insert id="insertHistory" parameterType="Map">
+		 INSERT INTO TB_SOLUTION_HIS (SOLUTION_CD, FILE_NAME, ST_DATE, ST_TIME, EMP_NO, WORK_TYPE)
+    VALUES (
+        #{SOLUTION_CD},
+        #{FILE_NAME},
+        #{ST_DATE},
+        #{ST_TIME},
+        (SELECT EMP_NO FROM TB_USER WHERE USR_NM = #{USR_NM}),
+        #{WORK_TYPE}
+    )
+	</insert>
+
+
+</mapper>
