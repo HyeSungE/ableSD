@@ -21,14 +21,17 @@ body {
 body::-webkit-scrollbar {
 	width: 0em;
 }
-
+.header, .grid-container {
+	margin-left: 10vw;
+	margin-right: 10vw;
+}
 .header {
 	height: 13vh;
 	position: fixed;
 	top: 0;
 	left: 0;
 	right: 0;
-	margin: 0 auto;
+	
 	padding: 10px;
 	background-color: #f0f0f0;
 	background-image: url('resources/ableSDImage/Rectangle 3.png');
@@ -44,10 +47,7 @@ body::-webkit-scrollbar {
 	margin: 0;
 }
 
-.header, .grid-container {
-	margin-left: 10vw;
-	margin-right: 10vw;
-}
+
 
 .header-title {
 	display: flex;
@@ -88,7 +88,7 @@ body::-webkit-scrollbar {
 .grid-container {
 	min-width: fit-content;
 	min-height: fit-content;
-	margin: 0 auto;
+
 	display: grid;
 	grid-template-columns: repeat(5, 1fr);
 	padding: 0px;
@@ -96,7 +96,7 @@ body::-webkit-scrollbar {
 	background-color: transparent;
 	justify-content: center;
 	align-content: center;
-	margin-top: 17vh;
+	margin-top: 120px;
 }
 
 .grid-item {
