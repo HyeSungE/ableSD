@@ -17,14 +17,14 @@
 	<select id="selectSolution" parameterType="String"
 		resultType="SolutionFiles">
 		SELECT FILE_SEQ, FILE_NAME, b.CODE_DESC + FILE_PATH AS
-		FILE_PATH
+		FILE_PATH, F_USE as FILE_USE
 		FROM TB_SOLUTION_FILES a
 		INNER JOIN TB_CODE b ON a.SOLUTION_CD
 		= b.ACT_CODE AND b.PARENT_CODE =
 		'BA00'
 		WHERE SOLUTION_CD =
 		#{solutionCode}
-		AND F_USE = 'Y'
+		
 		ORDER BY FILE_SEQ
 	</select>
 

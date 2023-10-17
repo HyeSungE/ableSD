@@ -1,5 +1,6 @@
 package com.able.ableSD.Contorller;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URLEncoder;
@@ -140,9 +141,9 @@ public class HomeController {
 			throws KeyManagementException, NoSuchAlgorithmException, KeyStoreException, IOException {
 		
 		String apiUrl = "https://192.168.10.38:5001/webapi/auth.cgi?api=SYNO.API.Auth&version=3&method=login&account="
-				+ account + "&passwd=" + passwd + "&session=FileStation&format=cookie"; // Login API Url : account(아이디)와 passwd(비밀번호)를 url에 파라미터로 줌
+				+ account + "&passwd=" +  URLEncoder.encode(passwd, "UTF-8") + "&session=FileStation&format=cookie"; // Login API Url : account(아이디)와 passwd(비밀번호)를 url에 파라미터로 줌
 
-		CloseableHttpClient httpClient = getHttpClient(); // 통신을 위한 HttpClient객체
+		CloseableHttpClient httpClient = getHttpClient(); // 통신을 위한 HttpClient객체 
 		
 		HttpGet httpGet = new HttpGet(apiUrl); // apiUrl로 Get요청 생성
 		
@@ -258,9 +259,9 @@ public class HomeController {
 		
 		String FILE_NAME = request.getParameter("FILE_NAME"); //파일이름
 		
-		//String FILE_PATH = request.getParameter("FILE_PATH");
+		String FILE_PATH = request.getParameter("FILE_PATH"); //파일경로
 		//String FILE_PATH = "/※기술본부/솔루션/X-Contact/실행파일/ablePDS.zip"; //test path 
-		String FILE_PATH = "/※기술본부/솔루션/XCUBE-CTI/BasicDataCreator/XCUBE_BasicDataCreator.zip"; // test path
+		//String FILE_PATH = "/※기술본부/솔루션/XCUBE-CTI/BasicDataCreator/XCUBE_BasicDataCreator.zip"; // test path
 		
 		String SOLUTION_CD = request.getParameter("SOLUTION_CD"); // 솔루션 분류 코드
 		
@@ -386,9 +387,23 @@ public class HomeController {
 		
 		InputStream is = entity.getContent(); // Entity를 바이트스트림으로 가져옴
 		
+		 // 바이트 배열을 저장하기 위한 ByteArrayOutputStream 생성
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        byte[] buffer = new byte[1024];
+        int bytesRead;
+        
+        while ((bytesRead = is.read(buffer)) != -1) {
+            byteArrayOutputStream.write(buffer, 0, bytesRead);
+        }
+        
+        // 바이트 배열을 문자열로 변환
+        return new String(byteArrayOutputStream.toByteArray(), StandardCharsets.UTF_8);
+		
+		/*
 		byte[] bytes = is.readAllBytes(); // 바이트배열로 받음
 		
 		return new String(bytes, StandardCharsets.UTF_8);// 스트링으로 변환
+		*/
 	}
 
 }

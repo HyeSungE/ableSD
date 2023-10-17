@@ -7,21 +7,26 @@ public class SolutionFiles {
 	private String FILE_NAME;
 	private String FILE_PATH;
 	private String FILE_TYPE;
-	
+	private String FILE_USE;
 	
 	
 	public SolutionFiles() {
 		super();
 	}
 	
-	public SolutionFiles(String sOLUTION_CD, String fILE_SEQ, String fILE_NAME, String fILE_PATH, String fILE_TYPE) {
+
+	public SolutionFiles(String sOLUTION_CD, String fILE_SEQ, String fILE_NAME, String fILE_PATH, String fILE_TYPE,
+			String fILE_USE) {
 		super();
 		SOLUTION_CD = sOLUTION_CD;
 		FILE_SEQ = fILE_SEQ;
 		FILE_NAME = fILE_NAME;
 		FILE_PATH = fILE_PATH;
 		FILE_TYPE = fILE_TYPE;
+		FILE_USE = fILE_USE;
 	}
+
+
 	public String getSOLUTION_CD() {
 		return SOLUTION_CD;
 	}
@@ -52,6 +57,18 @@ public class SolutionFiles {
 	public void setFILE_TYPE(String fILE_TYPE) {
 		FILE_TYPE = fILE_TYPE;
 	}
+
+
+	public String getFILE_USE() {
+		return FILE_USE;
+	}
+
+
+	public void setFILE_USE(String fILE_USE) {
+		FILE_USE = fILE_USE;
+	}
+
+
 	
 	
 	

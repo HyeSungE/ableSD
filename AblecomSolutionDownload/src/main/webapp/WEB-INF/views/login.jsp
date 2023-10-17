@@ -12,6 +12,8 @@
 body {
 	padding: 0px;
 	margin: 0px;
+	font-size : medium;
+	caret-color: transparent; /* 타이핑 커서 숨기기*/
 }
 /* 로그인 박스 배경  */
 .login-background {
@@ -62,6 +64,7 @@ body {
 	height: 30px;
 	border: none; 
 	outline: none; 
+	font-size : 15px;
 }
 
 /* 아이디 비밀번호 인풋 아이콘 */
@@ -82,6 +85,7 @@ body {
 	box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5), 7px 7px 20px
 		0px rgba(0, 0, 0, .1), 4px 4px 5px 0px rgba(0, 0, 0, .1);
 	outline: none;
+	font-size : 15px;
 }
 
 /* 로그인 버튼 호버액션  */
@@ -100,7 +104,9 @@ body {
 	height: 0px;
 	padding-bottom: 30px;
 }
-
+.show-caret {
+    caret-color: auto; /* 또는 원래 커서 색상 */
+}
 </style>
 
 </head>
@@ -116,19 +122,19 @@ body {
 				<tr>
 					<td>
 						<div class="input-box">
-							<span><i class="fa-solid fa-user"></i></span><input class="login-input" type="text" id="account" name="account" placeholder="아이디" required /> <br />
+							<span><i class="fa-solid fa-user"></i></span><input class="login-input show-caret" type="text" id="account" name="account" placeholder="아이디" required tabIndex='1' /> <br />
 						</div>
 					</td>
 					<td class="login-btn-td" rowspan='2'>
-						<button type="button" class="login-button custom-btn btn-7">로그인</button>
+						<button type="button" class="login-button custom-btn btn-7" tabIndex='3' >로그인</button>
 					</td>
 				</tr>
 				<tr>
 					<td>
 						<div class="input-box">
-							<span><i class="fa-solid fa-lock"></i></span><input class="login-input" type="password" id="passwd"  name="passwd" placeholder="비밀번호" required /> <br />
+							<span><i class="fa-solid fa-lock"></i></span><input class="login-input show-caret" type="password" id="passwd"  name="passwd" placeholder="비밀번호" required tabIndex='2' /> <br />
 						</div>
-						<input type="checkbox" id="save-id-cb" name="save-id-cb" /> 아이디 저장 <br />
+						<input type="checkbox" id="save-id-cb" name="save-id-cb" tabIndex='4' /> 아이디 저장 <br />
 				</tr>
 			</table>
 		</form>

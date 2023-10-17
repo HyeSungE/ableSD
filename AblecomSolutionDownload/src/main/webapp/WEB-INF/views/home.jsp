@@ -15,6 +15,7 @@ body {
 	padding: 0;
 	font-weight: lighter;
 	font-size: small;
+	caret-color: transparent; /* 타이핑 커서 숨기기*/
 }
 
 
@@ -31,7 +32,7 @@ body::-webkit-scrollbar {
 	top: 0;
 	left: 0;
 	right: 0;
-	
+	z-index: 1000; /* 다른 요소 위에 헤더가 보이도록 함 */
 	padding: 10px;
 	background-color: #f0f0f0;
 	background-image: url('resources/ableSDImage/Rectangle 3.png');
@@ -119,11 +120,21 @@ ul {
 ul li {
 	height: 25px;
 	text-align: left;
-	margin-bottom: 15px;
+	
 	align-items: center;
 	list-style: none;
+	
 }
 
+.ul_section1 li,.ul_section2 li {
+	margin-bottom : 15px;
+	
+}
+
+.ul_section3 li{
+	padding-top : 12.5px;
+	padding-bottom : 12.5px;
+}
 .no-dot {
 	list-style: none;
 	pointer-events: none;
@@ -312,6 +323,10 @@ ul li {
 	}
 }
 
+.textSection{
+	font-size : 15px;
+}
+
 </style>
 </head>
 <body>
@@ -345,16 +360,25 @@ ul li {
 							<c:set var="count" value="0" />
 							<c:forEach var="solution" items="${solutionMap.value}">
 								<c:if test="${fn:substring(solution.FILE_SEQ,0,1) eq section}">
-									<li id="${solution.FILE_NAME}"><span class="list_span" id="list_span_section${section}" onmouseover="HoverAction(${section}, true,'${solutionMap.key}_${solution.FILE_NAME}')" onmouseout="HoverAction(${section}, false,'${solutionMap.key}_${solution.FILE_NAME}')" onclick="downloadClick('${solution.FILE_NAME}', '${solution.FILE_PATH}', '${solutionMap.key}')"> <c:if test="${section eq 1 or section eq 2}">
-												<img id="download_image_${solutionMap.key}_${solution.FILE_NAME}" class="section${section }_download_image" src="resources/ableSDImage/section_${section}_download.png" alt="download">
-
-											</c:if> <c:if test="${section eq 3}">
-												<img id="section_${section }_download_image" class="section${section }_download_image" src="resources/ableSDImage/section_${section}_download.png" alt="download">
-
-											</c:if> <span id="text_section_${solutionMap.key}_${solution.FILE_NAME}" class="text_section_${section }">${solution.FILE_NAME}</span>
-									</span></li>
-									</span>
+									<li id="${solution.FILE_NAME}" class="clickable_${solution.FILE_USE}">
+										<span class="list_span" id="list_span_section${section}" 
+											onmouseover="HoverAction(${section}, true,'${solutionMap.key}_${solution.FILE_NAME}','${solution.FILE_USE }')" 
+											onmouseout="HoverAction(${section}, false,'${solutionMap.key}_${solution.FILE_NAME}','${solution.FILE_USE }')" 
+											onclick="downloadClick('${solution.FILE_NAME}', '${solution.FILE_PATH}', '${solutionMap.key}','${solution.FILE_USE }')"> 
+											
+											<c:if test="${section eq 1 or section eq 2}">
+												<img id="download_image_${solutionMap.key}_${solution.FILE_NAME}" class="section${section }_download_image downloadImage_${solution.FILE_USE}" src="resources/ableSDImage/section_${section}_download.png" alt="download">
+											</c:if>
+											<c:if test="${section eq 3}">
+												<img id="section_${section }_download_image" class="section${section }_download_image downloadImage_${solution.FILE_USE}" src="resources/ableSDImage/section_${section}_download.png" alt="download">
+											</c:if>
+											<span id="text_section_${solutionMap.key}_${solution.FILE_NAME}" class="textSection text_section_${section } file_name_text_${solution.FILE_USE}">${solution.FILE_NAME}</span>
+											
+											 
+											
+										</span>
 									</li>
+									
 									<c:set var="count" value="${count + 1}" />
 								</c:if>
 							</c:forEach>
@@ -370,12 +394,35 @@ ul li {
 
 
 	<script>
-    function HoverAction(section, isMouseOver,id) {
+	
+	document.addEventListener('DOMContentLoaded', function() {
+	    // DOM이 로드된 후 실행되는 코드
+	    var downloadImages = document.querySelectorAll('.downloadImage_N');
+
+	    for (var i = 0; i < downloadImages.length; i++) {
+	        downloadImages[i].style.filter = 'contrast(0)'; // 그레이스케일 스타일 적용
+	    }
+	    
+	    var fileNameText = document.querySelectorAll('.file_name_text_N');
+
+	    for (var i = 0; i < fileNameText.length; i++) {
+	    	   fileNameText[i].style.color = 'gray'; // 글씨 색깔을 회색으로 변경
+	    }
+	    
+	    var clickableListItems = document.querySelectorAll('.clickable_N');
+
+	    for (var i = 0; i < clickableListItems.length; i++) {
+	        clickableListItems[i].style.pointerEvents = 'none'; // 클릭 불가능하게 설정
+	    }
+
+	});
+	
+    function HoverAction(section, isMouseOver,id,fileUse) {
    	 if (section == 1 || section == 2) {
    		   var image = document.getElementById('download_image_'+id);
    		   var textSection = document.getElementById('text_section_' + id);
-
-   	        if (image && image) {
+		
+   	        if (image && fileUse=='Y') {
    	            if (isMouseOver) {
    	                image.src = 'resources/ableSDImage/section_' + section + '_download_hover.png';
    	                textSection.style.color = '#ffa41b';
@@ -418,73 +465,79 @@ ul li {
 			}
 		});
 
-		function downloadClick(FILE_NAME, FILE_PATH, SOLUTION_CD) {
-			console.log(FILE_PATH + FILE_NAME + "downloading" );
-			const downloadConfirm = window.confirm(FILE_NAME + ' 파일을 다운로드 하시겠습니까?');
-			if (downloadConfirm) {
-				console.log("downloadAPI ajax start");
-				$.ajax({
-					url : "downloadAPI",
-					method : "GET",
-					data : {
-						"FILE_NAME" : FILE_NAME,
-						"FILE_PATH" : FILE_PATH,
-						"SOLUTION_CD" : SOLUTION_CD
-					},
-					xhrFields : {
-						responseType : 'blob' // 응답을 블롭(blob)으로 받아옴
-					},
-					success : function(data, textStatus, xhr) {
-						console.log(textStatus)
-						if (textStatus == 'success') {
-							var contentDisposition = xhr
-									.getResponseHeader('Content-Disposition');
-							console.log(contentDisposition);
-							var fileName = "";
-							if (contentDisposition) {
-								// Content-Disposition 헤더 값에서 큰따옴표("")를 제거하고 파일 이름을 추출합니다.
+		function downloadClick(FILE_NAME, FILE_PATH, SOLUTION_CD,fileUse) {
+			if(fileUse=='Y'){
+				
+				console.log(FILE_PATH + FILE_NAME + "downloading" );
+				const downloadConfirm = window.confirm(FILE_NAME + ' 파일을 다운로드 하시겠습니까?');
+				if (downloadConfirm) {
+					console.log("downloadAPI ajax start");
+					$.ajax({
+						url : "downloadAPI",
+						method : "GET",
+						data : {
+							"FILE_NAME" : FILE_NAME,
+							"FILE_PATH" : FILE_PATH,
+							"SOLUTION_CD" : SOLUTION_CD
+						},
+						xhrFields : {
+							responseType : 'blob' // 응답을 블롭(blob)으로 받아옴
+						},
+						success : function(data, textStatus, xhr) {
+							console.log(textStatus)
+							if (textStatus == 'success') {
+								var contentDisposition = xhr
+										.getResponseHeader('Content-Disposition');
+								console.log(contentDisposition);
+								var fileName = "";
+								if (contentDisposition) {
+									// Content-Disposition 헤더 값에서 큰따옴표("")를 제거하고 파일 이름을 추출합니다.
 
-								// /\"/g 글로벌로 "를 찾아 공백으로 바꾸고 filename= 으로 split
-								fileName = contentDisposition.replace(/"/g, "")
-										.split('filename=')[1];
-								fileName = decodeURIComponent(fileName); //인코딩된 파일이름 디코딩
-								fileName = fileName.replace(/\+/g, ' '); // /\+/g 글로벌로 +를 찾아 공백으로 바꿈
+									// /\"/g 글로벌로 "를 찾아 공백으로 바꾸고 filename= 으로 split
+									fileName = contentDisposition.replace(/"/g, "")
+											.split('filename=')[1];
+									fileName = decodeURIComponent(fileName); //인코딩된 파일이름 디코딩
+									fileName = fileName.replace(/\+/g, ' '); // /\+/g 글로벌로 +를 찾아 공백으로 바꿈
 
-							} else {
-								// contentDisposition가 없는 경우에 대한 처리
-								console.log("Content-Disposition 헤더가 없습니다.");
+								} else {
+									// contentDisposition가 없는 경우에 대한 처리
+									console.log("Content-Disposition 헤더가 없습니다.");
+								}
+
+								var url = window.URL.createObjectURL(data);
+								var a = document.createElement("a");
+								a.href = url;
+								a.download = fileName;
+								document.body.appendChild(a);
+								a.click();
+								window.URL.revokeObjectURL(url);
+							} else if (textStatus == 'nocontent') {
+								alert("파일이 존재하지 않습니다.")
 							}
 
-							var url = window.URL.createObjectURL(data);
-							var a = document.createElement("a");
-							a.href = url;
-							a.download = fileName;
-							document.body.appendChild(a);
-							a.click();
-							window.URL.revokeObjectURL(url);
-						} else if (textStatus == 'nocontent') {
-							alert("파일이 존재하지 않습니다.")
-						}
-
-					},
-					error : function(error) {
-						console.log(error)
-						console.log(error.status)
-						var errorStatus = error.status;
-						if(errorStatus == 302) {
-							alert("다운로드 실패 [" + error.status + "]\n로그인 정보가 없습니다.\n다시 로그인 해주세요.");
-							location.replace("/ableSD");
-						}else if(errorStatus == 204) {
-							alert("다운로드 실패 [" + error.status + "]\n다운로드가 경로가 존재하지 않습니다.");
+						},
+						error : function(error) {
+							console.log(error)
+							console.log(error.status)
+							var errorStatus = error.status;
+							if(errorStatus == 302) {
+								alert("다운로드 실패 [" + error.status + "]\n로그인 정보가 없습니다.\n다시 로그인 해주세요.");
+								location.replace("/ableSD");
+							}else if(errorStatus == 204) {
+								alert("다운로드 실패 [" + error.status + "]\n다운로드가 경로가 존재하지 않습니다.");
+								
+							}else if(errorStatus == 404){
+								alert("다운로드 실패 [" + error.status + "]\n잘못된 경로입니다.");		
+							}
 							
-						}else if(errorStatus == 404){
-							alert("다운로드 실패 [" + error.status + "]\n잘못된 경로입니다.");		
 						}
-						
-					}
-				});
+					});
 
+				}
+				
+				
 			}
+			
 		}
 	</script>
 
