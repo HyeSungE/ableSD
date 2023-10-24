@@ -16,13 +16,14 @@ body {
 	font-weight: lighter;
 	font-size: small;
 	caret-color: transparent; /* 타이핑 커서 숨기기*/
+	overflow : auto;
 }
 
 
-body::-webkit-scrollbar {
+/* body::-webkit-scrollbar {
 	width: 0em;
-}
-.header, .grid-container {
+} */
+.header, .grid-container,.grid-container-header {
 	margin-left: 10vw;
 	margin-right: 10vw;
 }
@@ -63,33 +64,43 @@ body::-webkit-scrollbar {
 	margin: 20px;
 	display: flex;
 	align-items: center;
+	flex-direction: column
+}
+.guideDoc-div {
+	width: 100%;
+    height: 100%;
+    text-align: end;
+}
+.guideDoc-div > img{
+	width: 28px;
+ 	height: 28px;
 }
 
+
+.info-div{
+	display : flex;
+	align-items: center;
+}
 .logout_span {
 	display: flex;
 	align-items: center;
 	border-radius: 5px;
-	margin-left: 10px;
 	background-image: url('resources/ableSDImage/Rectangle 4.png');
-
 	padding: 3px;
 	
 }
 
 .logout_span:hover {
-	background-image: url('');
+/* 	background-image: url(''); */
 	background-color: #ffb000;
-	border-radius: 10px;
+	border-radius: 5px;
 }
 
 #logoutImage {
 	margin-legt : 7px;
 }
 
-.grid-container {
-	min-width: fit-content;
-	min-height: fit-content;
-
+.grid-container-header{
 	display: grid;
 	grid-template-columns: repeat(5, 1fr);
 	padding: 0px;
@@ -97,9 +108,33 @@ body::-webkit-scrollbar {
 	background-color: transparent;
 	justify-content: center;
 	align-content: center;
-	margin-top: 120px;
+	margin-top: 100px;
+	
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 1000; /* 다른 요소 위에 헤더가 보이도록 함 */
+	padding: 10px;
+	
+	
 }
-
+.grid-container {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	padding: 0px;
+	gap: 20px;
+	background-color: transparent;
+	justify-content: center;
+	align-content: center;
+	margin-top: 100px;
+}
+.grid-item-header{
+	text-align: center;
+	padding: 0px;
+	background-color: white;
+	height: fit-content;
+}
 .grid-item {
 	text-align: center;
 	padding: 0px;
@@ -134,6 +169,7 @@ ul li {
 .ul_section3 li{
 	padding-top : 12.5px;
 	padding-bottom : 12.5px;
+	margin-bottom: 8px;
 }
 .no-dot {
 	list-style: none;
@@ -204,7 +240,7 @@ ul li {
 }
 
 
-@media screen and (max-width: 670px) {
+@media screen and (max-width: 669px) {
 	.header {
 		background-repeat: round;
 	}
@@ -215,12 +251,15 @@ ul li {
 	.header-descript {
 		visibility: hidden;
 	}
-	.grid-container {
+	.grid-container,.grid-container-header {
 		grid-template-columns: repeat(1, 1fr);
 	}
 	.grid-item:nth-child(2), .grid-item:nth-child(3), .grid-item:nth-child(4),
 		.grid-item:nth-child(5) {
-		margin-top: 200px;
+		margin-top: 320px;
+	}
+	.grid-item-header:nth-child(2),.grid-item-header:nth-child(3),.grid-item-header:nth-child(4),.grid-item-header:nth-child(5){
+		visibility : hidden;
 	}
 	.image-container {
 		max-width: 77%;
@@ -232,7 +271,7 @@ ul li {
 	}
 }
 
-@media screen and (min-width: 670px) and (max-width: 889px) {
+@media screen and (min-width: 670px) and (max-width: 890px) {
 	.header {
 		background-repeat: round;
 	}
@@ -243,12 +282,15 @@ ul li {
 	.header-descript {
 		visibility: hidden;
 	}
-	.grid-container {
+	.grid-container,.grid-container-header {
 		grid-template-columns: repeat(2, 1fr);
 	}
 	.grid-item:nth-child(3), .grid-item:nth-child(4), .grid-item:nth-child(5)
 		{
-		margin-top: 200px;
+		margin-top: 320px;
+	}
+	.grid-item-header:nth-child(3),.grid-item-header:nth-child(4),.grid-item-header:nth-child(5){
+		visibility : hidden;
 	}
 	.image-container {
 		max-width: 77%;
@@ -260,7 +302,7 @@ ul li {
 	}
 }
 
-@media screen and (min-width: 890px) and (max-width: 1110px) {
+@media screen and (min-width: 891px) and (max-width: 1200px) {
 	.header {
 		background-repeat: round;
 	}
@@ -270,32 +312,18 @@ ul li {
 	.header-descript {
 		visibility: hidden;
 	}
-	.grid-container {
+	.grid-container, .grid-container-header  {
 		grid-template-columns: repeat(3, 1fr);
-		/* Adjust the number of columns as needed */
+		
 	}
 	.grid-item:nth-child(4), .grid-item:nth-child(5) {
-		margin-top: 200px;
+		margin-top: 320px;
+	}
+	.grid-item-header:nth-child(4), .grid-item-header:nth-child(5){
+		visibility : hidden;
 	}
 }
 
-@media screen and (min-width: 1110px) and (max-width: 1200px) {
-	.header {
-		background-repeat: round;
-	}
-	.user-info {
-		margin: 20px;
-	}
-	.header-descript {
-		visibility: hidden;
-	}
-	.grid-container {
-		grid-template-columns: repeat(4, 1fr);
-	}
-	.grid-item:nth-child(5) {
-		margin-top: 200px;
-	}
-}
 
 @media screen and (min-width: 1201px) and (max-width: 1346px) {
 	.header {
@@ -304,11 +332,14 @@ ul li {
 	.user-info {
 		margin: 20px;
 	}
-	.grid-container {
+	.grid-container, .grid-container-header {
 		grid-template-columns: repeat(4, 1fr);
 	}
 	.grid-item:nth-child(5) {
-		margin-top: 200px;
+		margin-top: 320px;
+	}
+	.grid-item-header:nth-child(5){
+		visibility : hidden;
 	}
 }
 
@@ -330,6 +361,7 @@ ul li {
 </style>
 </head>
 <body>
+<div>
 	<div class="header">
 		<div class="image-container">
 			<div class="header-title">
@@ -341,13 +373,34 @@ ul li {
 		</div>
 
 		<div class='user-info'>
-			${sessionScope.currentUser.account} 님&nbsp; <span class="logout_span"> <img src="resources/ableSDImage/logoutIcon.png" alt="logout"> <img src="resources/ableSDImage/logout.png" id="logoutImage" alt="logout">
+			<div class="guideDoc-div">
+				<img id="guide-icon" src="resources/ableSDImage/guide.png" alt="guide">
+			</div>
+			<div class="info-div">
+			${sessionScope.currentUser.account} 님&nbsp;
+			<span class="logout_span"> 
+				<img src="resources/ableSDImage/logoutIcon.png" alt="logout"> <img src="resources/ableSDImage/logout.png" id="logoutImage" alt="logout">
 			</span>
+			</div>
+			
 		</div>
 
-
+	
+	
 
 	</div>
+	<div class="grid-container-header">
+		<c:forEach var="solutionMap" items="${solutionMap}">
+			<div class="grid-item-header">
+				<img class="solution_title_image" src="resources/ableSDImage/${solutionMap.key}.png" alt="${solutionMap.key}">
+			</div>
+		</c:forEach>
+	</div>
+</div>
+
+	
+
+	
 	<div class="grid-container">
 		<c:forEach var="solutionMap" items="${solutionMap}">
 			<div class="grid-item">
@@ -376,7 +429,7 @@ ul li {
 											
 											 
 											
-										</span>
+									</span>
 									</li>
 									
 									<c:set var="count" value="${count + 1}" />
@@ -394,7 +447,248 @@ ul li {
 
 
 	<script>
+	var giHeaderImgArr = [];
+	var giHeaderImg = [];
+	var giHeader = [];
+	var gridItemHeaders = document.querySelectorAll('.grid-item-header');
+	var gridItem = document.querySelector(".grid-item");
+	var gridItemBottom = gridItem.offsetTop + gridItem.clientHeight;
 	
+	
+	
+	document.addEventListener('DOMContentLoaded', function() {
+		for (var i = 0; i < 5; i++) {
+			giHeaderImgArr[i] = gridItemHeaders[i].querySelector('img').src
+		}
+		
+		
+		giHeader = init2DArr(5,5);
+		giHeaderImg = init2DArr(5,5);
+		if (window.innerWidth <= 670) {
+			//console.log("1개씩 5줄입니다.");
+			
+			for (var i = 0; i < 5; i++) {
+	            for (var j = 0; j < 1; j++) {
+	            	giHeader[i][j] = gridItemHeaders[i * 1 + j];
+	            	giHeaderImg[i][j] = giHeaderImgArr[i * 1 + j];
+	            }
+	        }
+			for (var i = 1; i < 5; i++) {
+				gridItemHeaders[i].style.visibility = "hidden";
+	        }
+			
+		} else if (window.innerWidth < 891) {
+	    	//console.log("2개씩 2줄하고 1개씩 1줄입니다.");
+	    	
+	    	for (var i = 0; i < 2; i++) {
+	            for (var j = 0; j < 2; j++) {
+	            	giHeader[i][j] = gridItemHeaders[i * 2 + j];
+	            	giHeaderImg[i][j] = giHeaderImgArr[i * 2 + j];
+	            }
+	        }
+	    	giHeader[2][0] = gridItemHeaders[4];
+	    	giHeaderImg[2][0] = giHeaderImgArr[4];
+	    	
+	    	for (var i = 2; i < 5; i++) {
+	    		gridItemHeaders[i].style.visibility = "hidden";
+	        }
+	    } else if (window.innerWidth < 1201) {
+	    	//console.log("3개씩 1줄 2개씩 1줄입니다");
+	    	
+	    	for (var i = 0; i < 1; i++) {
+	            for (var j = 0; j < 3; j++) {
+	            	giHeader[i][j] = gridItemHeaders[i * 3 + j];
+	            	giHeaderImg[i][j] = giHeaderImgArr[i * 3 + j];
+	            }
+	        }
+	    	giHeader[1][0] = gridItemHeaders[3];
+	    	giHeader[1][1] = gridItemHeaders[4];
+	    	giHeaderImg[1][0] = giHeaderImgArr[3];
+	    	giHeaderImg[1][1] = giHeaderImgArr[4];
+	    	
+	    	for (var i = 3; i < 5; i++) {
+	    		console.log("gridItemHeaders[i] ++",gridItemHeaders[i])
+	    		gridItemHeaders[i].style.visibility = "hidden";
+
+	        }
+	    } else if (window.innerWidth < 1346) {
+	    	//console.log("4개씩 1줄 1개씩 1줄입니다");
+	    	
+	    	for (var i = 0; i < 1; i++) {
+	        	for (var j = 0; j < 4; j++) {
+	        		giHeader[i][j] = gridItemHeaders[i * 4 + j];
+	        		giHeaderImg[i][j] = giHeaderImgArr[i * 4 + j];
+	            }
+	         }
+	    	giHeader[1][0] = gridItemHeaders[4];
+	    	giHeaderImg[1][0] = giHeaderImgArr[4]; 
+	    	
+	    	for (var i = 4; i < 5; i++) {
+	    		gridItemHeaders[i].style.visibility = "hidden";
+	    	}
+	    }
+	    else if(window.innerWidth >= 1346){
+			//console.log("5개씩 1줄 입니다");
+			for (var i = 0; i < 1; i++) {
+	        	for (var j = 0; j < 5; j++) {
+	        		giHeader[i][j] = gridItemHeaders[i * 5 + j];
+	        		giHeaderImg[i][j] = giHeaderImgArr[i * 5 + j];
+	            }
+	         }
+	    	
+	    	for (var i = 0; i < 5; i++) {
+	    		gridItemHeaders[i].style.visibility = "visible";
+	    	}
+	    	
+	    }
+		//console.log("giHeader : ", giHeader);
+		//console.log("giHeaderImg : ",giHeaderImg)
+		
+		var scrollY = window.scrollY;
+	    var newRow = getCurrentRow(scrollY);
+	    if(getNonNullLength(giHeader[0]) == getNonNullLength(giHeader[currentRow])) {
+			for (var k = 0; k < getNonNullLength(giHeader[0]); k++) {
+    	            giHeader[0][k].style.visibility = "visible";
+    	    }
+		}             
+	    
+	    
+
+	});
+	
+	 
+	window.addEventListener("resize", function(){
+		giHeader = init2DArr(5,5);
+		giHeaderImg = init2DArr(5,5);
+		if (window.innerWidth <= 670) {
+			//console.log("1개씩 5줄입니다.");
+			for (var i = 0; i < 5; i++) {
+	            for (var j = 0; j < 1; j++) {
+	            	giHeader[i][j] = gridItemHeaders[i * 1 + j];
+	            	giHeaderImg[i][j] = giHeaderImgArr[i * 1 + j];
+	            }
+	        }
+			for (var i = 1; i < 5; i++) {
+				gridItemHeaders[i].style.visibility = "hidden";
+	        }
+			
+		} else if (window.innerWidth <= 891) {
+	    	//console.log("2개씩 2줄하고 1개씩 1줄입니다.");
+	    	for (var i = 0; i < 2; i++) {
+	            for (var j = 0; j < 2; j++) {
+	            	giHeader[i][j] = gridItemHeaders[i * 2 + j];
+	            	giHeaderImg[i][j] = giHeaderImgArr[i * 2 + j];
+	            }
+	        }
+	    	giHeader[2][0] = gridItemHeaders[4];
+	    	giHeaderImg[2][0] = giHeaderImgArr[4];
+	    	
+	    	for (var i = 2; i < 5; i++) {
+	    		gridItemHeaders[i].style.visibility = "hidden";
+	        }
+	    } else if (window.innerWidth <= 1200) {
+	    	//console.log("3개씩 1줄 2개씩 1줄입니다");
+	    	for (var i = 0; i < 1; i++) {
+	            for (var j = 0; j < 3; j++) {
+	            	giHeader[i][j] = gridItemHeaders[i * 3 + j];
+	            	giHeaderImg[i][j] = giHeaderImgArr[i * 3 + j];
+	            }
+	        }
+	    	giHeader[1][0] = gridItemHeaders[3];
+	    	giHeader[1][1] = gridItemHeaders[4];
+	    	giHeaderImg[1][0] = giHeaderImgArr[3];
+	    	giHeaderImg[1][1] = giHeaderImgArr[4];
+	    	
+	    	for (var i = 3; i < 5; i++) {
+	    		gridItemHeaders[i].style.visibility = "hidden";
+
+	        }
+	    } else if (window.innerWidth <= 1345) {
+	    	//console.log("4개씩 1줄 1개씩 1줄입니다");
+	    	for (var i = 0; i < 1; i++) {
+	        	for (var j = 0; j < 4; j++) {
+	        		giHeader[i][j] = gridItemHeaders[i * 4 + j];
+	        		giHeaderImg[i][j] = giHeaderImgArr[i * 4 + j];
+	            }
+	         }
+	    	//giHeader[1][0] = gridItemHeaders[4];
+	    	//giHeaderImg[1][0] = giHeaderImgArr[4]; 
+	    	
+	    	for (var i = 4; i < 5; i++) {
+	    		gridItemHeaders[i].style.visibility = "hidden";
+	    	}
+	    }
+	    else if(window.innerWidth >= 1346){
+			//console.log("5개씩 1줄 입니다");
+			for (var i = 0; i < 1; i++) {
+	        	for (var j = 0; j < 5; j++) {
+	        		giHeader[i][j] = gridItemHeaders[i * 5 + j];
+	        		giHeaderImg[i][j] = giHeaderImgArr[i * 5 + j];
+	            }
+	         } 
+	    	
+	    	for (var i = 0; i < 5; i++) {
+	    		gridItemHeaders[i].style.visibility = "visible";
+	    		giHeader[0][i].querySelector('img').src = giHeaderImgArr[i];
+	    	}
+	    	
+	    }
+
+		var scrollY = window.scrollY;
+	    var newRow = getCurrentRow(scrollY);
+	    if(getNonNullLength(giHeader[0]) == getNonNullLength(giHeader[currentRow])) {
+			for (var k = 0; k < getNonNullLength(giHeader[0]); k++) {
+    	            giHeader[0][k].style.visibility = "visible";
+    	    }
+		}             
+	    
+	});
+	
+
+	
+	var currentRow = 0;
+
+	window.addEventListener("scroll", function () {
+		
+	    var scrollY = window.scrollY;
+	    var newRow = getCurrentRow(scrollY);
+	    if (newRow !== currentRow) {
+	        currentRow = newRow;
+	        console.log("currentRow : ",currentRow);
+	        for (var i = 0; i < giHeader.length; i++) {
+	            for (var j = 0; j < giHeader[i].length; j++) {
+	                var gridItem = giHeader[i][j];
+					if(gridItem == null) continue;
+	                // 현재 행(i)이 currentRow와 같은 경우 해당 그리드 아이템을 보이게 설정합니다.
+	                if (i === currentRow) {
+	                	 var imageElement = giHeader[0][j].querySelector('img'); // 이미지 요소를 찾습니다.
+	                	    if (imageElement) {
+	                	        imageElement.src = giHeaderImg[i][j]; // 이미지의 src 속성을 변경합니다.
+	                	    }
+
+							if(getNonNullLength(giHeader[0])>getNonNullLength(giHeader[currentRow])){
+								for (var k = 0; k < getNonNullLength(giHeader[0]); k++) {
+					    	    	
+		                	        if (k >= getNonNullLength(giHeader[currentRow])) {
+		                	        	
+		                	            giHeader[0][k].style.visibility = "hidden";
+		                	        }
+		                	    }	
+							}else if(getNonNullLength(giHeader[0]) == getNonNullLength(giHeader[currentRow])) {
+								//console.log(giHeader[0])
+								for (var k = 0; k < getNonNullLength(giHeader[0]); k++) {
+		                	            giHeader[0][k].style.visibility = "visible";
+		                	    }
+							}            	
+	                	    	
+	                }
+	            }
+	        }
+	        
+	    }
+	  	
+	    
+	});    	
 	document.addEventListener('DOMContentLoaded', function() {
 	    // DOM이 로드된 후 실행되는 코드
 	    var downloadImages = document.querySelectorAll('.downloadImage_N');
@@ -436,7 +730,7 @@ ul li {
    }
 	
 		var loginMessage = "<c:out value='${loginMessage}'/>";
-		console.log(loginMessage);
+		//console.log(loginMessage);
 		console.log(loginMessage);
 		if (loginMessage != '') {
 			alert(loginMessage);
@@ -539,6 +833,65 @@ ul li {
 			}
 			
 		}
+		
+		
+		function init2DArr(rows, columns) {
+			var twoDArray = [];
+		    for (var i = 0; i < rows; i++) {
+			twoDArray[i] = [];
+		    	for (var j = 0; j < columns; j++) {
+		    		twoDArray[i][j] = null;
+		   		}
+		  	}
+		   	return twoDArray;
+		}
+
+		function getCurrentRow(scrollY) {
+			var gridItem = document.querySelector(".grid-item");
+		    var rowHeight = gridItem.offsetHeight+300;
+		  
+		    var currentRow = Math.floor(scrollY / rowHeight);
+		    
+			//console.log("scroll 위치 : ",scrollY);
+		   // console.log("rowHeight 위치 : ",rowHeight)
+		   // console.log("currentRow 위치 : ",currentRow)
+		    return currentRow;
+		}
+		function getNonNullLength(arr) {
+		    var count = 0;
+		    for (var i = 0; i < arr.length; i++) {
+		        if (arr[i] !== null) {
+		            count++;
+		        }
+		    }
+		    return count;
+		}
+		/* <img id="guide-icon" src="resources/ableSDImage/guide.png" alt="guide"> */
+		$(document).ready(function() { // doc ready start
+			
+			
+			 $('#guide-icon').on('click', function() {		
+				var pdfUrl = 'resources/GuideDocument/AbleSD_vesion_1.0_guide_doc.pdf'; // PDF 문서의 URL
+				var newWindow = window.open(pdfUrl, '_blank');   // 새 창을 열고 PDF 문서를 표시
+				
+	
+			});
+    		$('.guideDoc-div').on('mouseover', function() {
+      			var guideIcon = $(this).find('img');
+      			guideIcon.attr('src', 'resources/ableSDImage/guide_hover.png'); // 마우스 오버 시 이미지 변경
+    		});
+
+    		$('.guideDoc-div').on('mouseout', function() {
+      			var guideIcon = $(this).find('img');
+      			guideIcon.attr('src', 'resources/ableSDImage/guide.png'); // 마우스 아웃 시 이미지 원래대로 변경
+    		});
+    
+    
+    
+  });//doc ready end
+		
+		
+		
 	</script>
 
 

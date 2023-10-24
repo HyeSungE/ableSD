@@ -65,12 +65,12 @@ body {
 	border: none; 
 	outline: none; 
 	font-size : 15px;
+	padding-left: 10px;
 }
 
 /* 아이디 비밀번호 인풋 아이콘 */
 .fa-solid {
 	margin-left: 10px;
-	margin-right: 10px;
 }
 
 /* 로그인 버튼 */
@@ -107,11 +107,50 @@ body {
 .show-caret {
     caret-color: auto; /* 또는 원래 커서 색상 */
 }
+.loading-div{
+	display : none;
+	top: 50%;
+	left: 50%;
+	padding: 5px;
+	transform: translate(-50%, -50%);
+	position: absolute;
+	background-color: #ededed;
+	width: 500px;
+	height: 300px;
+	border-radius: 10px;
+    opacity : 0.8;
+	z-index : 999;
+	
+}
+
+.loading-bar {
+text-align : center;   
+  	position: absolute;
+	top: 50%;
+	left: 50%;
+	padding: 5px;
+	transform: translate(-50%, -50%);
+	position: absolute;
+	
+}
+
+.loading-title{
+	font-size : x-large;
+	font-weight : bold;
+}
+.fa-solid-span{
+caret-color: transparent; /* 타이핑 커서 숨기기*/
+}
 </style>
 
 </head>
 <body>
-
+	<div class="loading-div">
+		<div class="loading-bar">
+			<img src="resources/loading/Spin-loading.gif" alt="로딩"/>
+			<p class="loading-title">로 그 인 중 입 니 다 . . .</p>
+		</div>
+	</div>
 	<div class="login-background"></div>
 	<div class="login-box">
 		<h2 class="login-title">
@@ -122,7 +161,7 @@ body {
 				<tr>
 					<td>
 						<div class="input-box">
-							<span><i class="fa-solid fa-user"></i></span><input class="login-input show-caret" type="text" id="account" name="account" placeholder="아이디" required tabIndex='1' /> <br />
+							<span class="fa-solid-span"><i class="fa-solid fa-user"></i></span><input class="login-input show-caret" type="text" id="account" name="account" placeholder="아이디" required tabIndex='1' /> <br />
 						</div>
 					</td>
 					<td class="login-btn-td" rowspan='2'>
@@ -146,7 +185,8 @@ body {
 	
 	/* 중복 로그인 클릭 방지를 위한 로그인 클릭 변수   */
 	var loginButtonClicked = false; 
-	
+	var elements = document.getElementsByClassName("loading-div");
+	   
 	/* 로그인 클릭 시 실행 함수*/
 	$(".login-button").click(function () {
 		
@@ -155,13 +195,21 @@ body {
 		  console.log("ajax 입장하십니다 ~"); /*  */
 		  
 		  if (account.trim() === "" ) { /* 아이디를 입력하지 않았을 경우 */
-	            alert("아이디를 입력해 주세요.");
+			
+			  alert("아이디를 입력해 주세요.");
 		  } else if (passwd.trim() === "") { /* 비밀번호를 입력하지 않았을 경우 */
+			 
 	            alert("비밀번호를 입력해 주세요.");
 		  }else{
+			  
 			  if( loginButtonClicked ) { /* 이미 로그인 버튼이 클릭 된 상태 -> 로그인 진행 중 */
 					alert("로그인 진행 중입니다.")	
-				}else{
+			}else{
+				$('.loading-div').css('display', 'block');
+				setTimeout(function(){
+
+					
+					
 					loginButtonClicked = true; /* 로그인 버튼이 눌리지 않았으면 -> 로그인 진행 중 X */
 			
 					retrieveAPI() /* login API를 호출하기 위해 먼저 retrieveAPI 호출 */
@@ -180,10 +228,13 @@ body {
 				        	console.log("loginAPI 요청 성공 . . .");
 				        	if(data == 'success'){ /* 성공이면 로그인 버튼 클릭을 false로 만들고 다운로드 페이지로 이동  */
 				        		loginButtonClicked = false;
-				        		location.href="./home"
-				        		
+				        		location.href="./home"	
+				        		setTimeout(function() {
+				        	    	$('.loading-div').css('display', 'none');
+				        	    }, 1000); // 1000 밀리초 (1초)
 				        	}else{ /* 성공이 아니면 로그인 버튼 클릭을 false로 만들고 코드에 따라 alert창 출력 */
 				        		console.log(data)
+				        		$('.loading-div').css('display', 'none');
 				        		if(data == 400) {
 				        			alert("아이디 또는 비밀번호를 확인해 주세요")
 				        		}else{
@@ -195,6 +246,7 @@ body {
 				        },
 				        error: function (error) { /* loginAPI 에러 */
 				        	console.log("loginAPI 요청 에러 . . . : " + error);
+				        	$('.loading-div').css('display', 'none');
 				        	alert("관리자에게 문의해주세요")
 				        	loginButtonClicked = false;
 				        },
@@ -202,10 +254,15 @@ body {
 				    })
 				    .catch(function (error) { /* retrieveAPI 에러 */
 				      console.log("retrieveAPI 요청 에러 . . . : " + error);
+				      $('.loading-div').css('display', 'none');
 				      alert("관리자에게 문의해주세요")
 				      loginButtonClicked = false;
-				    });		
-				}  
+				    });					  
+
+				},1000)
+	
+					
+			}  
 		}
 	});
 	/* 엔터키 클릭 시, 로그인 버튼 액션 */
