@@ -34,6 +34,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.able.ableSD.SolutionCode;
+import com.able.ableSD.DTO.SolutionCodeMap;
 import com.able.ableSD.DTO.SolutionFiles;
 import com.able.ableSD.DTO.User;
 import com.able.ableSD.Service.SolutionFilesMapper;
@@ -69,12 +70,19 @@ public class HomeController {
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public String goDownload(HttpServletRequest request) {
 		
+		SolutionCodeMap solutionCodeMap = SolutionCodeMap.getInstance();
+
 		HttpSession session = request.getSession(); // 세션을 가져옴
 		
 		//현재 로그인 중이지 않거나 세션이 없으면 로그인이 필요하다는 메시지를 보냄
 		if (session.getAttribute("currentUser") == null || !request.isRequestedSessionIdValid()) {
 			request.setAttribute("loginMessage", "로그인이 필요합니다.");	
 		} 
+		
+		User currentUser = (User) session.getAttribute("currentUser");
+		if(currentUser != null && (currentUser.getAccount().equals("") || currentUser.getAccount()==null)) {
+			request.setAttribute("loginMessage", "로그인이 필요합니다.");	
+		}
 		
 		//현재 로그인 중 상태
 		else {
@@ -89,12 +97,18 @@ public class HomeController {
 				solutionMap.put(code, solutionFilesMapper.selectSolution(code)); // 코드를 key로 하고, 코드를 이용해셔 DB에서 파일리스트를 가져와 value로 저장
 
 			}
+			
+			solutionMap.put("BA99", null);
+			
+			
 			//li태그의 끝을 맞추기 위해 각 섹션 ( 서버 프로세스, 운영 프로그램, 메뉴얼)의 가장 많은 개수를 찾는다.
 			List<Integer> countMaxLines = solutionFilesMapper.countMaxLines();
 			
 			request.setAttribute("solutionMap", solutionMap);
 			
 			request.setAttribute("countMaxLines", countMaxLines);
+			
+			request.setAttribute("solutionCodeMap", solutionCodeMap.getMap());
 
 		}
 		return "home";

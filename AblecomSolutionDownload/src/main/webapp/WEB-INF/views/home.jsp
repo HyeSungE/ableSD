@@ -16,17 +16,17 @@ body {
 	font-weight: lighter;
 	font-size: small;
 	caret-color: transparent; /* 타이핑 커서 숨기기*/
-	overflow : auto;
+	overflow: auto;
 }
-
 
 /* body::-webkit-scrollbar {
 	width: 0em;
 } */
-.header, .grid-container,.grid-container-header {
-	margin-left: 10vw;
-	margin-right: 10vw;
+.header, .grid-container, .grid-container-header {
+	margin-left: 20px;
+	margin-right: 20px;
 }
+
 .header {
 	height: 13vh;
 	position: fixed;
@@ -49,8 +49,6 @@ body {
 	margin: 0;
 }
 
-
-
 .header-title {
 	display: flex;
 	align-items: center;
@@ -66,75 +64,76 @@ body {
 	align-items: center;
 	flex-direction: column
 }
+
 .guideDoc-div {
 	width: 100%;
-    height: 100%;
-    text-align: end;
+	height: 100%;
+	text-align: end;
 }
-.guideDoc-div > img{
+
+.guideDoc-div>img {
 	width: 28px;
- 	height: 28px;
+	height: 28px;
 }
 
-
-.info-div{
-	display : flex;
+.info-div {
+	display: flex;
 	align-items: center;
 }
+
 .logout_span {
 	display: flex;
 	align-items: center;
 	border-radius: 5px;
 	background-image: url('resources/ableSDImage/Rectangle 4.png');
 	padding: 3px;
-	
 }
 
 .logout_span:hover {
-/* 	background-image: url(''); */
+	/* 	background-image: url(''); */
 	background-color: #ffb000;
 	border-radius: 5px;
 }
 
 #logoutImage {
-	margin-legt : 7px;
+	margin-legt: 7px;
 }
 
-.grid-container-header{
+.grid-container-header {
 	display: grid;
-	grid-template-columns: repeat(5, 1fr);
+	grid-template-columns: repeat(7, 1fr);
 	padding: 0px;
 	gap: 20px;
 	background-color: transparent;
 	justify-content: center;
 	align-content: center;
-	margin-top: 100px;
-	
+	margin-top: 110px;
 	position: fixed;
 	top: 0;
 	left: 0;
 	right: 0;
 	z-index: 1000; /* 다른 요소 위에 헤더가 보이도록 함 */
 	padding: 10px;
-	
-	
 }
+
 .grid-container {
 	display: grid;
-	grid-template-columns: repeat(5, 1fr);
+	grid-template-columns: repeat(7, 1fr);
 	padding: 0px;
 	gap: 20px;
 	background-color: transparent;
 	justify-content: center;
 	align-content: center;
-	margin-top: 100px;
+	margin-top: 110px;
 }
-.grid-item-header{
+
+.grid-item-header {
 	text-align: center;
 	padding: 0px;
 	background-color: white;
 	height: fit-content;
 }
+
 .grid-item {
 	text-align: center;
 	padding: 0px;
@@ -155,22 +154,18 @@ ul {
 ul li {
 	height: 25px;
 	text-align: left;
-	
 	align-items: center;
 	list-style: none;
-	
 }
 
-.ul_section1 li,.ul_section2 li {
-	margin-bottom : 15px;
-	
-}
-
-.ul_section3 li{
-	padding-top : 12.5px;
-	padding-bottom : 12.5px;
+.ul_section1 li, .ul_section2 li {
 	margin-bottom: 8px;
 }
+
+.ul_section3 li {
+	margin-bottom: 8px;
+}
+
 .no-dot {
 	list-style: none;
 	pointer-events: none;
@@ -222,7 +217,7 @@ ul li {
 
 #list_span_section3:hover {
 	background-image: url('resources/ableSDImage/manualBackGroundHover.png');
-	background-size: cover;.
+	background-size: cover; .
 	background-repeat: no-repeat;
 	border-radius: 5px;
 }
@@ -239,7 +234,6 @@ ul li {
 	color: black;
 }
 
-
 @media screen and (max-width: 669px) {
 	.header {
 		background-repeat: round;
@@ -251,15 +245,18 @@ ul li {
 	.header-descript {
 		visibility: hidden;
 	}
-	.grid-container,.grid-container-header {
+	.grid-container, .grid-container-header {
 		grid-template-columns: repeat(1, 1fr);
 	}
 	.grid-item:nth-child(2), .grid-item:nth-child(3), .grid-item:nth-child(4),
-		.grid-item:nth-child(5) {
+		.grid-item:nth-child(5), .grid-item:nth-child(6), .grid-item:nth-child(7)
+		{
 		margin-top: 320px;
 	}
-	.grid-item-header:nth-child(2),.grid-item-header:nth-child(3),.grid-item-header:nth-child(4),.grid-item-header:nth-child(5){
-		visibility : hidden;
+	.grid-item-header:nth-child(2), .grid-item-header:nth-child(3),
+		.grid-item-header:nth-child(4), .grid-item-header:nth-child(5),
+		.grid-item-header:nth-child(6), .grid-item-header:nth-child(7) {
+		visibility: hidden;
 	}
 	.image-container {
 		max-width: 77%;
@@ -271,7 +268,7 @@ ul li {
 	}
 }
 
-@media screen and (min-width: 670px) and (max-width: 890px) {
+@media screen and (min-width: 670px) and (max-width: 890.4px) {
 	.header {
 		background-repeat: round;
 	}
@@ -282,15 +279,17 @@ ul li {
 	.header-descript {
 		visibility: hidden;
 	}
-	.grid-container,.grid-container-header {
+	.grid-container, .grid-container-header {
 		grid-template-columns: repeat(2, 1fr);
 	}
-	.grid-item:nth-child(3), .grid-item:nth-child(4), .grid-item:nth-child(5)
-		{
+	.grid-item:nth-child(3), .grid-item:nth-child(4), .grid-item:nth-child(5),
+		.grid-item:nth-child(6), .grid-item:nth-child(7) {
 		margin-top: 320px;
 	}
-	.grid-item-header:nth-child(3),.grid-item-header:nth-child(4),.grid-item-header:nth-child(5){
-		visibility : hidden;
+	.grid-item-header:nth-child(3), .grid-item-header:nth-child(4),
+		.grid-item-header:nth-child(5), .grid-item-header:nth-child(6),
+		.grid-item-header:nth-child(7) {
+		visibility: hidden;
 	}
 	.image-container {
 		max-width: 77%;
@@ -302,7 +301,7 @@ ul li {
 	}
 }
 
-@media screen and (min-width: 891px) and (max-width: 1200px) {
+@media screen and (min-width: 890.5px) and (max-width: 1200px) {
 	.header {
 		background-repeat: round;
 	}
@@ -312,18 +311,18 @@ ul li {
 	.header-descript {
 		visibility: hidden;
 	}
-	.grid-container, .grid-container-header  {
+	.grid-container, .grid-container-header {
 		grid-template-columns: repeat(3, 1fr);
-		
 	}
-	.grid-item:nth-child(4), .grid-item:nth-child(5) {
+	.grid-item:nth-child(4), .grid-item:nth-child(5), .grid-item:nth-child(6),
+		.grid-item:nth-child(7) {
 		margin-top: 320px;
 	}
-	.grid-item-header:nth-child(4), .grid-item-header:nth-child(5){
-		visibility : hidden;
+	.grid-item-header:nth-child(4), .grid-item-header:nth-child(5),
+		.grid-item-header:nth-child(6), .grid-item-header:nth-child(7) {
+		visibility: hidden;
 	}
 }
-
 
 @media screen and (min-width: 1201px) and (max-width: 1346px) {
 	.header {
@@ -335,18 +334,37 @@ ul li {
 	.grid-container, .grid-container-header {
 		grid-template-columns: repeat(4, 1fr);
 	}
-	.grid-item:nth-child(5) {
+	.grid-item:nth-child(5), .grid-item:nth-child(6), .grid-item:nth-child(7)
+		{
 		margin-top: 320px;
 	}
-	.grid-item-header:nth-child(5){
-		visibility : hidden;
+	.grid-item-header:nth-child(5), .grid-item-header:nth-child(6),
+		.grid-item-header:nth-child(7) {
+		visibility: hidden;
+	}
+}
+
+@media screen and (min-width: 1347px) and (max-width: 1463px) {
+	.header {
+		background-repeat: round;
+	}
+	.user-info {
+		margin: 20px;
+	}
+	.grid-container, .grid-container-header {
+		grid-template-columns: repeat(5, 1fr);
+	}
+	.grid-item:nth-child(6), .grid-item:nth-child(7) {
+		margin-top: 320px;
+	}
+	.grid-item-header:nth-child(6), .grid-item-header:nth-child(7) {
+		visibility: hidden;
 	}
 }
 
 @media screen and (max-height: 999999px) {
 	.header {
-		height: 90px;
-		background-repeat: round;
+		height: 100px;
 	}
 	.user-info {
 		margin: 20px;
@@ -354,58 +372,68 @@ ul li {
 	}
 }
 
-.textSection{
-	font-size : 15px;
+.textSection {
+	font-size: 15px;
 }
 
+.solutionName_h {
+	font-size: 22px;
+	font-weight: 600;
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+.solutionName_div {
+	margin-top: 20px
+}
 </style>
 </head>
 <body>
-<div>
-	<div class="header">
-		<div class="image-container">
-			<div class="header-title">
-				<img src="resources/ableSDImage/ablecom.png" alt="로고"> <img src="resources/ableSDImage/Solution Download.png" alt=타이틀">
+	<div>
+		<div class="header">
+			<div class="image-container">
+				<div class="header-title">
+					<img src="resources/ableSDImage/ablecom.png" alt="로고"> <img src="resources/ableSDImage/Solution Download.png" alt=타이틀">
+				</div>
+				<div class='header-descript'>
+					<img src="resources/ableSDImage/ableSD_description.png" alt="설명">
+				</div>
 			</div>
-			<div class='header-descript'>
-				<img src="resources/ableSDImage/ableSD_description.png" alt="설명">
+
+			<div class='user-info'>
+				<div class="guideDoc-div">
+					<img id="guide-icon" src="resources/ableSDImage/guide.png" alt="guide">
+				</div>
+				<div class="info-div">
+					${sessionScope.currentUser.account} 님&nbsp; <span class="logout_span"> <img src="resources/ableSDImage/logoutIcon.png" alt="logout"> <img src="resources/ableSDImage/logout.png" id="logoutImage" alt="logout">
+					</span>
+				</div>
+
 			</div>
 		</div>
+		<div class="grid-container-header">
+			<c:forEach var="solutionMap" items="${solutionMap}">
+				<div class="grid-item-header">
+					<c:set var="solutionName" value="${solutionCodeMap[solutionMap.key]}" />
+					<div class="solutionName_div">
+						<span class="solutionName_h">${solutionName}</span>
+					</div>
 
-		<div class='user-info'>
-			<div class="guideDoc-div">
-				<img id="guide-icon" src="resources/ableSDImage/guide.png" alt="guide">
-			</div>
-			<div class="info-div">
-			${sessionScope.currentUser.account} 님&nbsp;
-			<span class="logout_span"> 
-				<img src="resources/ableSDImage/logoutIcon.png" alt="logout"> <img src="resources/ableSDImage/logout.png" id="logoutImage" alt="logout">
-			</span>
-			</div>
-			
+				</div>
+			</c:forEach>
+
+
+
 		</div>
-
-	
-	
-
 	</div>
-	<div class="grid-container-header">
-		<c:forEach var="solutionMap" items="${solutionMap}">
-			<div class="grid-item-header">
-				<img class="solution_title_image" src="resources/ableSDImage/${solutionMap.key}.png" alt="${solutionMap.key}">
-			</div>
-		</c:forEach>
-	</div>
-</div>
-
-	
-
-	
 	<div class="grid-container">
 		<c:forEach var="solutionMap" items="${solutionMap}">
 			<div class="grid-item">
 
-				<img class="solution_title_image" src="resources/ableSDImage/${solutionMap.key}.png" alt="${solutionMap.key}">
+				<%-- <img class="solution_title_image" src="resources/ableSDImage/${solutionMap.key}.png" alt="${solutionMap.key}">--%>
+				<c:set var="solutionName" value="${solutionCodeMap[solutionMap.key]}" />
+				<div class="solutionName_div">
+					<span class="solutionName_h">${solutionName}</span>
+				</div>
 
 				<c:forEach var="section" begin="1" end="3">
 					<div id="section_${section}">
@@ -413,25 +441,16 @@ ul li {
 							<c:set var="count" value="0" />
 							<c:forEach var="solution" items="${solutionMap.value}">
 								<c:if test="${fn:substring(solution.FILE_SEQ,0,1) eq section}">
-									<li id="${solution.FILE_NAME}" class="clickable_${solution.FILE_USE}">
-										<span class="list_span" id="list_span_section${section}" 
-											onmouseover="HoverAction(${section}, true,'${solutionMap.key}_${solution.FILE_NAME}','${solution.FILE_USE }')" 
-											onmouseout="HoverAction(${section}, false,'${solutionMap.key}_${solution.FILE_NAME}','${solution.FILE_USE }')" 
-											onclick="downloadClick('${solution.FILE_NAME}', '${solution.FILE_PATH}', '${solutionMap.key}','${solution.FILE_USE }')"> 
-											
-											<c:if test="${section eq 1 or section eq 2}">
+									<li id="${solution.FILE_NAME}" class="clickable_${solution.FILE_USE}"><span class="list_span" id="list_span_section${section}" onmouseover="HoverAction(${section}, true,'${solutionMap.key}_${solution.FILE_NAME}','${solution.FILE_USE }')" onmouseout="HoverAction(${section}, false,'${solutionMap.key}_${solution.FILE_NAME}','${solution.FILE_USE }')" onclick="downloadClick('${solution.FILE_NAME}', '${solution.FILE_PATH}', '${solutionMap.key}','${solution.FILE_USE }')"> <c:if test="${section eq 1 or section eq 2}">
 												<img id="download_image_${solutionMap.key}_${solution.FILE_NAME}" class="section${section }_download_image downloadImage_${solution.FILE_USE}" src="resources/ableSDImage/section_${section}_download.png" alt="download">
-											</c:if>
-											<c:if test="${section eq 3}">
+											</c:if> <c:if test="${section eq 3}">
 												<img id="section_${section }_download_image" class="section${section }_download_image downloadImage_${solution.FILE_USE}" src="resources/ableSDImage/section_${section}_download.png" alt="download">
-											</c:if>
-											<span id="text_section_${solutionMap.key}_${solution.FILE_NAME}" class="textSection text_section_${section } file_name_text_${solution.FILE_USE}">${solution.FILE_NAME}</span>
-											
-											 
-											
-									</span>
-									</li>
-									
+											</c:if> <span id="text_section_${solutionMap.key}_${solution.FILE_NAME}" class="textSection text_section_${section } file_name_text_${solution.FILE_USE}">${solution.FILE_NAME}</span>
+
+
+
+									</span></li>
+
 									<c:set var="count" value="${count + 1}" />
 								</c:if>
 							</c:forEach>
@@ -447,248 +466,410 @@ ul li {
 
 
 	<script>
-	var giHeaderImgArr = [];
-	var giHeaderImg = [];
-	var giHeader = [];
+	function initialize(solutionMap) {
+		 
+	}
+
+		
+
 	var gridItemHeaders = document.querySelectorAll('.grid-item-header');
 	var gridItem = document.querySelector(".grid-item");
+	var solutionNameDiv = document.querySelector(".solutionName_div");
 	var gridItemBottom = gridItem.offsetTop + gridItem.clientHeight;
 	
+	var originalSpanTagArr = [];
+	var spanTagTextArr = [];
 	
-	
-	document.addEventListener('DOMContentLoaded', function() {
-		for (var i = 0; i < 5; i++) {
-			giHeaderImgArr[i] = gridItemHeaders[i].querySelector('img').src
-		}
-		
-		
-		giHeader = init2DArr(5,5);
-		giHeaderImg = init2DArr(5,5);
-		if (window.innerWidth <= 670) {
-			//console.log("1개씩 5줄입니다.");
-			
-			for (var i = 0; i < 5; i++) {
-	            for (var j = 0; j < 1; j++) {
-	            	giHeader[i][j] = gridItemHeaders[i * 1 + j];
-	            	giHeaderImg[i][j] = giHeaderImgArr[i * 1 + j];
-	            }
-	        }
-			for (var i = 1; i < 5; i++) {
-				gridItemHeaders[i].style.visibility = "hidden";
-	        }
-			
-		} else if (window.innerWidth < 891) {
-	    	//console.log("2개씩 2줄하고 1개씩 1줄입니다.");
-	    	
-	    	for (var i = 0; i < 2; i++) {
-	            for (var j = 0; j < 2; j++) {
-	            	giHeader[i][j] = gridItemHeaders[i * 2 + j];
-	            	giHeaderImg[i][j] = giHeaderImgArr[i * 2 + j];
-	            }
-	        }
-	    	giHeader[2][0] = gridItemHeaders[4];
-	    	giHeaderImg[2][0] = giHeaderImgArr[4];
-	    	
-	    	for (var i = 2; i < 5; i++) {
-	    		gridItemHeaders[i].style.visibility = "hidden";
-	        }
-	    } else if (window.innerWidth < 1201) {
-	    	//console.log("3개씩 1줄 2개씩 1줄입니다");
-	    	
-	    	for (var i = 0; i < 1; i++) {
-	            for (var j = 0; j < 3; j++) {
-	            	giHeader[i][j] = gridItemHeaders[i * 3 + j];
-	            	giHeaderImg[i][j] = giHeaderImgArr[i * 3 + j];
-	            }
-	        }
-	    	giHeader[1][0] = gridItemHeaders[3];
-	    	giHeader[1][1] = gridItemHeaders[4];
-	    	giHeaderImg[1][0] = giHeaderImgArr[3];
-	    	giHeaderImg[1][1] = giHeaderImgArr[4];
-	    	
-	    	for (var i = 3; i < 5; i++) {
-	    		console.log("gridItemHeaders[i] ++",gridItemHeaders[i])
-	    		gridItemHeaders[i].style.visibility = "hidden";
+	const spanTagTextList = ["X-Contact", "X-Cube", "TypeIX", "통계(ableReport)", "전광판(ableWallBoard)","소프트폰", "SIP Phone"]; 
 
-	        }
-	    } else if (window.innerWidth < 1346) {
-	    	//console.log("4개씩 1줄 1개씩 1줄입니다");
-	    	
-	    	for (var i = 0; i < 1; i++) {
-	        	for (var j = 0; j < 4; j++) {
-	        		giHeader[i][j] = gridItemHeaders[i * 4 + j];
-	        		giHeaderImg[i][j] = giHeaderImgArr[i * 4 + j];
-	            }
-	         }
-	    	giHeader[1][0] = gridItemHeaders[4];
-	    	giHeaderImg[1][0] = giHeaderImgArr[4]; 
-	    	
-	    	for (var i = 4; i < 5; i++) {
-	    		gridItemHeaders[i].style.visibility = "hidden";
-	    	}
-	    }
-	    else if(window.innerWidth >= 1346){
-			//console.log("5개씩 1줄 입니다");
-			for (var i = 0; i < 1; i++) {
-	        	for (var j = 0; j < 5; j++) {
-	        		giHeader[i][j] = gridItemHeaders[i * 5 + j];
-	        		giHeaderImg[i][j] = giHeaderImgArr[i * 5 + j];
-	            }
-	         }
-	    	
-	    	for (var i = 0; i < 5; i++) {
-	    		gridItemHeaders[i].style.visibility = "visible";
-	    	}
-	    	
-	    }
-		//console.log("giHeader : ", giHeader);
-		//console.log("giHeaderImg : ",giHeaderImg)
-		
-		var scrollY = window.scrollY;
-	    var newRow = getCurrentRow(scrollY);
-	    if(getNonNullLength(giHeader[0]) == getNonNullLength(giHeader[currentRow])) {
-			for (var k = 0; k < getNonNullLength(giHeader[0]); k++) {
-    	            giHeader[0][k].style.visibility = "visible";
-    	    }
-		}             
-	    
-	    
 
-	});
-	
-	 
-	window.addEventListener("resize", function(){
-		giHeader = init2DArr(5,5);
-		giHeaderImg = init2DArr(5,5);
-		if (window.innerWidth <= 670) {
-			//console.log("1개씩 5줄입니다.");
-			for (var i = 0; i < 5; i++) {
-	            for (var j = 0; j < 1; j++) {
-	            	giHeader[i][j] = gridItemHeaders[i * 1 + j];
-	            	giHeaderImg[i][j] = giHeaderImgArr[i * 1 + j];
-	            }
-	        }
-			for (var i = 1; i < 5; i++) {
-				gridItemHeaders[i].style.visibility = "hidden";
-	        }
-			
-		} else if (window.innerWidth <= 891) {
-	    	//console.log("2개씩 2줄하고 1개씩 1줄입니다.");
-	    	for (var i = 0; i < 2; i++) {
-	            for (var j = 0; j < 2; j++) {
-	            	giHeader[i][j] = gridItemHeaders[i * 2 + j];
-	            	giHeaderImg[i][j] = giHeaderImgArr[i * 2 + j];
-	            }
-	        }
-	    	giHeader[2][0] = gridItemHeaders[4];
-	    	giHeaderImg[2][0] = giHeaderImgArr[4];
-	    	
-	    	for (var i = 2; i < 5; i++) {
-	    		gridItemHeaders[i].style.visibility = "hidden";
-	        }
-	    } else if (window.innerWidth <= 1200) {
-	    	//console.log("3개씩 1줄 2개씩 1줄입니다");
-	    	for (var i = 0; i < 1; i++) {
-	            for (var j = 0; j < 3; j++) {
-	            	giHeader[i][j] = gridItemHeaders[i * 3 + j];
-	            	giHeaderImg[i][j] = giHeaderImgArr[i * 3 + j];
-	            }
-	        }
-	    	giHeader[1][0] = gridItemHeaders[3];
-	    	giHeader[1][1] = gridItemHeaders[4];
-	    	giHeaderImg[1][0] = giHeaderImgArr[3];
-	    	giHeaderImg[1][1] = giHeaderImgArr[4];
-	    	
-	    	for (var i = 3; i < 5; i++) {
-	    		gridItemHeaders[i].style.visibility = "hidden";
-
-	        }
-	    } else if (window.innerWidth <= 1345) {
-	    	//console.log("4개씩 1줄 1개씩 1줄입니다");
-	    	for (var i = 0; i < 1; i++) {
-	        	for (var j = 0; j < 4; j++) {
-	        		giHeader[i][j] = gridItemHeaders[i * 4 + j];
-	        		giHeaderImg[i][j] = giHeaderImgArr[i * 4 + j];
-	            }
-	         }
-	    	//giHeader[1][0] = gridItemHeaders[4];
-	    	//giHeaderImg[1][0] = giHeaderImgArr[4]; 
-	    	
-	    	for (var i = 4; i < 5; i++) {
-	    		gridItemHeaders[i].style.visibility = "hidden";
-	    	}
-	    }
-	    else if(window.innerWidth >= 1346){
-			//console.log("5개씩 1줄 입니다");
-			for (var i = 0; i < 1; i++) {
-	        	for (var j = 0; j < 5; j++) {
-	        		giHeader[i][j] = gridItemHeaders[i * 5 + j];
-	        		giHeaderImg[i][j] = giHeaderImgArr[i * 5 + j];
-	            }
-	         } 
-	    	
-	    	for (var i = 0; i < 5; i++) {
-	    		gridItemHeaders[i].style.visibility = "visible";
-	    		giHeader[0][i].querySelector('img').src = giHeaderImgArr[i];
-	    	}
-	    	
-	    }
-
-		var scrollY = window.scrollY;
-	    var newRow = getCurrentRow(scrollY);
-	    if(getNonNullLength(giHeader[0]) == getNonNullLength(giHeader[currentRow])) {
-			for (var k = 0; k < getNonNullLength(giHeader[0]); k++) {
-    	            giHeader[0][k].style.visibility = "visible";
-    	    }
-		}             
-	    
-	});
-	
-
+	var solutionName_h_arr = [];
 	
 	var currentRow = 0;
+	document.addEventListener('DOMContentLoaded', function() {
+		
+		
+		
+	
+		
+	    var scrollY = window.scrollY;
+	    var currentRow = getCurrentRow(scrollY);
+		
+		console.log(currentRow)
+		if (window.innerWidth <= 670) {
+			
+			for(var i=1; i < gridItemHeaders.length; i++ ){
+				gridItemHeaders[i].style.visibility = "hidden";
+			}
+		
+			gridItemHeaders[0].style.visibility = "visible";
+			
+		} else if (window.innerWidth < 891) {
+			//2열 3행
+			if(currentRow < 3){
+				for(var i=0; i < 2; i++ ){
+					gridItemHeaders[i].style.visibility = "visible";
+				}
+				for(var i=2; i < gridItemHeaders.length; i++ ){
+					gridItemHeaders[i].style.visibility = "hidden";
+				}
+			} else{
+				for(var i=0; i < 1; i++ ){
+					gridItemHeaders[i].style.visibility = "visible";
+				}
+				for(var i=1; i < gridItemHeaders.length; i++ ){
+					gridItemHeaders[i].style.visibility = "hidden";
+				}
+			}
+	    } else if (window.innerWidth < 1201) {
+	    	//3열 2행
+	    	if(currentRow < 2){
+	    		for(var i=0; i < 3; i++ ){
+					gridItemHeaders[i].style.visibility = "visible";
+				}
+		    	for(var i=3; i < gridItemHeaders.length; i++ ){
+					gridItemHeaders[i].style.visibility = "hidden";
+				}
+	    	} else {
+	    		for(var i=0; i < 1; i++ ){
+					gridItemHeaders[i].style.visibility = "visible";
+				}
+				for(var i=1; i < gridItemHeaders.length; i++ ){
+					gridItemHeaders[i].style.visibility = "hidden";
+				}
+	    	}
+	    	
+	    	
+	    } else if (window.innerWidth < 1346) {
+	    	//4열 1행
+	    	if(currentRow < 1) {
+	    		for(var i=0; i < 4; i++ ){
+					gridItemHeaders[i].style.visibility = "visible";
+				}
+		    	for(var i=4; i < gridItemHeaders.length; i++ ){
+					gridItemHeaders[i].style.visibility = "hidden";
+				}
+	    	} else {
+	    		for(var i=0; i < 3; i++ ){
+					gridItemHeaders[i].style.visibility = "visible";
+				}
+		    	for(var i=3; i < gridItemHeaders.length; i++ ){
+					gridItemHeaders[i].style.visibility = "hidden";
+				}
+	    	}
+	    	
+	    	
+	    }else if (window.innerWidth < 1463) {
+	    	//5열 1행
+	    	if(currentRow < 1) {
+	    		for(var i=0; i < 5; i++ ){
+					gridItemHeaders[i].style.visibility = "visible";
+				}
+		    	for(var i=5; i < gridItemHeaders.length; i++ ){
+					gridItemHeaders[i].style.visibility = "hidden";
+				}
+	    	} else {
+	    		for(var i=0; i < 2; i++ ){
+					gridItemHeaders[i].style.visibility = "visible";
+				}
+		    	for(var i=2; i < gridItemHeaders.length; i++ ){
+					gridItemHeaders[i].style.visibility = "hidden";
+				}
+	    	}
+	    	
+	    	
+	    	
+	    }
+	    else if(window.innerWidth >= 1463){
+	    	for(var i=0; i < gridItemHeaders.length; i++ ){
+				gridItemHeaders[i].style.visibility = "visible";
+			}
+	
+	    }
+
+	});
+	window.addEventListener('resize', function() {
+		
+		
+	    var scrollY = window.scrollY;
+	    var currentRow = getCurrentRow(scrollY);
+		console.log("resize currentRow : ", currentRow)
+		
+		if (window.innerWidth <= 670) {
+			
+			for(var i=1; i < gridItemHeaders.length; i++ ){
+				gridItemHeaders[i].style.visibility = "hidden";
+			}
+		
+			gridItemHeaders[0].style.visibility = "visible";
+			
+		} else if (window.innerWidth < 891) {
+			//2열 3행
+			if(currentRow < 3){
+				for(var i=0; i < 2; i++ ){
+					gridItemHeaders[i].style.visibility = "visible";
+				}
+				for(var i=2; i < gridItemHeaders.length; i++ ){
+					gridItemHeaders[i].style.visibility = "hidden";
+				}
+			} else{
+				for(var i=0; i < 1; i++ ){
+					gridItemHeaders[i].style.visibility = "visible";
+				}
+				for(var i=1; i < gridItemHeaders.length; i++ ){
+					gridItemHeaders[i].style.visibility = "hidden";
+				}
+			}
+	    } else if (window.innerWidth < 1201) {
+	    	//3열 2행
+	    	if(currentRow < 2){
+	    		for(var i=0; i < 3; i++ ){
+					gridItemHeaders[i].style.visibility = "visible";
+				}
+		    	for(var i=3; i < gridItemHeaders.length; i++ ){
+		    		console.log("Asdasdasd")
+					gridItemHeaders[i].style.visibility = "hidden";
+				}
+	    	} else {
+	    		for(var i=0; i < 1; i++ ){
+					gridItemHeaders[i].style.visibility = "visible";
+				}
+				for(var i=1; i < gridItemHeaders.length; i++ ){
+					gridItemHeaders[i].style.visibility = "hidden";
+				}
+	    	}
+	    	
+	    	
+	    } else if (window.innerWidth < 1346) {
+	    	//4열 1행
+	    	if(currentRow < 1) {
+	    		for(var i=0; i < 4; i++ ){
+					gridItemHeaders[i].style.visibility = "visible";
+				}
+		    	for(var i=4; i < gridItemHeaders.length; i++ ){
+					gridItemHeaders[i].style.visibility = "hidden";
+				}
+	    	} else {
+	    		for(var i=0; i < 3; i++ ){
+					gridItemHeaders[i].style.visibility = "visible";
+				}
+		    	for(var i=3; i < gridItemHeaders.length; i++ ){
+					gridItemHeaders[i].style.visibility = "hidden";
+				}
+	    	}
+	    	
+	    	
+	    }else if (window.innerWidth < 1463) {
+	    	//5열 1행
+	    	if(currentRow < 1) {
+	    		for(var i=0; i < 5; i++ ){
+					gridItemHeaders[i].style.visibility = "visible";
+				}
+		    	for(var i=5; i < gridItemHeaders.length; i++ ){
+					gridItemHeaders[i].style.visibility = "hidden";
+				}
+	    	} else {
+	    		for(var i=0; i < 2; i++ ){
+					gridItemHeaders[i].style.visibility = "visible";
+				}
+		    	for(var i=2; i < gridItemHeaders.length; i++ ){
+					gridItemHeaders[i].style.visibility = "hidden";
+				}
+	    	}
+	    	
+	    	
+	    	
+	    }
+	    else if(window.innerWidth >= 1463){
+	    	for(var i=0; i < gridItemHeaders.length; i++ ){
+				gridItemHeaders[i].style.visibility = "visible";
+			}
+	
+	    }
+
+	});
+	
 
 	window.addEventListener("scroll", function () {
 		
-	    var scrollY = window.scrollY;
-	    var newRow = getCurrentRow(scrollY);
-	    if (newRow !== currentRow) {
-	        currentRow = newRow;
-	        console.log("currentRow : ",currentRow);
-	        for (var i = 0; i < giHeader.length; i++) {
-	            for (var j = 0; j < giHeader[i].length; j++) {
-	                var gridItem = giHeader[i][j];
-					if(gridItem == null) continue;
-	                // 현재 행(i)이 currentRow와 같은 경우 해당 그리드 아이템을 보이게 설정합니다.
-	                if (i === currentRow) {
-	                	 var imageElement = giHeader[0][j].querySelector('img'); // 이미지 요소를 찾습니다.
-	                	    if (imageElement) {
-	                	        imageElement.src = giHeaderImg[i][j]; // 이미지의 src 속성을 변경합니다.
-	                	    }
+		
 
-							if(getNonNullLength(giHeader[0])>getNonNullLength(giHeader[currentRow])){
-								for (var k = 0; k < getNonNullLength(giHeader[0]); k++) {
-					    	    	
-		                	        if (k >= getNonNullLength(giHeader[currentRow])) {
-		                	        	
-		                	            giHeader[0][k].style.visibility = "hidden";
-		                	        }
-		                	    }	
-							}else if(getNonNullLength(giHeader[0]) == getNonNullLength(giHeader[currentRow])) {
-								//console.log(giHeader[0])
-								for (var k = 0; k < getNonNullLength(giHeader[0]); k++) {
-		                	            giHeader[0][k].style.visibility = "visible";
-		                	    }
-							}            	
-	                	    	
-	                }
-	            }
-	        }
-	        
+		var scrollY = window.scrollY;
+		var currentRow = getCurrentRow(scrollY);
+		var lastRow;
+		var lineItemCount;
+		const totalItemCount = 7;
+	  	if (window.innerWidth <= 670) {
+	  		lastRow = 7/1;
+	  		
+			var spanTag = gridItemHeaders[0].querySelector('span.solutionName_h');
+			spanTag.textContent = spanTagTextList[currentRow];
+			for(var i = 1; i < gridItemHeaders.length; i++ ){
+				gridItemHeaders[1].style.visibility = "hidden";
+			}
+				
+		}
+		
+	  	else if (window.innerWidth < 891) {
+	  		lineItemCount = 2;
+	  		var remain = totalItemCount%lineItemCount;
+			if (remain < 4) { remain = 1;}
+			lastRow = Math.floor(totalItemCount/lineItemCount) + remain - 1;
+	  		console.log("currentRow : ",currentRow)
+			var spanTagArr = [];
+			for(var i = 0; i < lineItemCount; i++){
+				spanTagArr[i] = gridItemHeaders[i].querySelector('span.solutionName_h');
+			}
+			if(currentRow < lastRow){
+					spanTagArr[0].textContent = spanTagTextList[currentRow*lineItemCount];
+					spanTagArr[1].textContent = spanTagTextList[currentRow*lineItemCount+1];
+					for(var i=0; i < lineItemCount; i++ ){
+						gridItemHeaders[i].style.visibility = "visible";
+					}
+					for(var i=lineItemCount; i < gridItemHeaders.length; i++ ){
+						gridItemHeaders[i].style.visibility = "hidden";
+					}
+			} else{
+				spanTagArr[0].textContent = spanTagTextList[totalItemCount -1];
+				
+				for(var i=0; i < totalItemCount%lineItemCount; i++ ){
+					gridItemHeaders[i].style.visibility = "visible";
+				}
+				for(var i=totalItemCount%lineItemCount; i < gridItemHeaders.length; i++ ){
+					gridItemHeaders[i].style.visibility = "hidden";
+				}
+			}
+				
+		}
+		
+		else if (window.innerWidth < 1201) {
+			lineItemCount = 3;
+			var remain = totalItemCount%lineItemCount;
+			if (remain < 4) { remain = 1;}
+	  		lastRow = Math.floor(totalItemCount/lineItemCount) + remain - 1;
+	  		
+	  		console.log("currentRow : ",currentRow)
+			var spanTagArr = [];
+			for(var i = 0; i < lineItemCount; i++){
+				spanTagArr[i] = gridItemHeaders[i].querySelector('span.solutionName_h');
+			}
+			if(currentRow < lastRow){
+					spanTagArr[0].textContent = spanTagTextList[currentRow*lineItemCount];
+					spanTagArr[1].textContent = spanTagTextList[currentRow*lineItemCount+1];
+					spanTagArr[2].textContent = spanTagTextList[currentRow*lineItemCount+2];
+					
+					for(var i=0; i < lineItemCount; i++ ){
+						gridItemHeaders[i].style.visibility = "visible";
+					}
+					for(var i=lineItemCount; i < gridItemHeaders.length; i++ ){
+						gridItemHeaders[i].style.visibility = "hidden";
+					}
+			} else{
+				console.log("here is last Row !")
+				spanTagArr[0].textContent = spanTagTextList[totalItemCount -1];
+				
+				for(var i=0; i < totalItemCount%lineItemCount; i++ ){
+					gridItemHeaders[i].style.visibility = "visible";
+				}
+				for(var i=totalItemCount%lineItemCount; i < gridItemHeaders.length; i++ ){
+					gridItemHeaders[i].style.visibility = "hidden";
+				}
+			}
+	    } 
+		
+		else if (window.innerWidth < 1347) {
+			lineItemCount = 4;
+			var remain = totalItemCount%lineItemCount;
+			if (remain < 4) { remain = 1;}
+	  		lastRow = Math.floor(totalItemCount/lineItemCount) + remain - 1;
+	  		console.log("lastRow : ",lastRow)
+	  		console.log("currentRow : ",currentRow)
+			var spanTagArr = [];
+			for(var i = 0; i < lineItemCount; i++){
+				spanTagArr[i] = gridItemHeaders[i].querySelector('span.solutionName_h');
+			}
+			if(currentRow < lastRow){
+					spanTagArr[0].textContent = spanTagTextList[currentRow*lineItemCount];
+					spanTagArr[1].textContent = spanTagTextList[currentRow*lineItemCount+1];
+					spanTagArr[2].textContent = spanTagTextList[currentRow*lineItemCount+2];
+					spanTagArr[3].textContent = spanTagTextList[currentRow*lineItemCount+3];
+					
+					for(var i=0; i < lineItemCount; i++ ){
+						gridItemHeaders[i].style.visibility = "visible";
+					}
+					for(var i=lineItemCount; i < gridItemHeaders.length; i++ ){
+						gridItemHeaders[i].style.visibility = "hidden";
+					}
+			} else{
+				console.log("here is last Row !")
+				spanTagArr[0].textContent = spanTagTextList[totalItemCount -3];
+				spanTagArr[1].textContent = spanTagTextList[totalItemCount -2];
+				spanTagArr[2].textContent = spanTagTextList[totalItemCount -1];
+				
+				for(var i=0; i < totalItemCount%lineItemCount; i++ ){
+					gridItemHeaders[i].style.visibility = "visible";
+				}
+				for(var i=totalItemCount%lineItemCount; i < gridItemHeaders.length; i++ ){
+					gridItemHeaders[i].style.visibility = "hidden";
+				}
+			}
+	    	
 	    }
+		
+		else if (window.innerWidth < 1463) {
+			lineItemCount = 5;
+			var remain = totalItemCount%lineItemCount;
+			if (remain < 4) { remain = 1;}
+	  		lastRow = Math.floor(totalItemCount/lineItemCount) + remain - 1;
+	  		console.log("lastRow : ",lastRow)
+	  		console.log("currentRow : ",currentRow)
+			var spanTagArr = [];
+			for(var i = 0; i < lineItemCount; i++){
+				spanTagArr[i] = gridItemHeaders[i].querySelector('span.solutionName_h');
+			}
+			if(currentRow < lastRow){
+					spanTagArr[0].textContent = spanTagTextList[currentRow*lineItemCount];
+					spanTagArr[1].textContent = spanTagTextList[currentRow*lineItemCount+1];
+					spanTagArr[2].textContent = spanTagTextList[currentRow*lineItemCount+2];
+					spanTagArr[3].textContent = spanTagTextList[currentRow*lineItemCount+3];
+					spanTagArr[4].textContent = spanTagTextList[currentRow*lineItemCount+4];
+					
+					for(var i=0; i < lineItemCount; i++ ){
+						gridItemHeaders[i].style.visibility = "visible";
+					}
+					for(var i=lineItemCount; i < gridItemHeaders.length; i++ ){
+						gridItemHeaders[i].style.visibility = "hidden";
+					}
+			} else{
+				console.log("here is last Row !")
+				spanTagArr[0].textContent = spanTagTextList[totalItemCount -2];
+				spanTagArr[1].textContent = spanTagTextList[totalItemCount -1];
+				for(var i=0; i < totalItemCount%lineItemCount; i++ ){
+					gridItemHeaders[i].style.visibility = "visible";
+				}
+				for(var i=totalItemCount%lineItemCount; i < gridItemHeaders.length; i++ ){
+					gridItemHeaders[i].style.visibility = "hidden";
+				}
+			}
+	    }
+	    
+		else if(window.innerWidth >= 1463){
+	    	//7열 1행
+			for (var i = 0; i < gridItemHeaders.length; i++) {
+				var spanTag = gridItemHeaders[i].querySelector('span.solutionName_h');
+			 	spanTag.textContent = spanTagTextList[i];
+				solutionNameDiv[i].style.visibility = "visible";
+		    }
+	    }
+		
+		
+		
+	}); 
 	  	
 	    
-	});    	
+	 	
+
+	
 	document.addEventListener('DOMContentLoaded', function() {
 	    // DOM이 로드된 후 실행되는 코드
 	    var downloadImages = document.querySelectorAll('.downloadImage_N');
@@ -848,15 +1029,25 @@ ul li {
 
 		function getCurrentRow(scrollY) {
 			var gridItem = document.querySelector(".grid-item");
-		    var rowHeight = gridItem.offsetHeight+300;
+		    var rowHeight = gridItem.offsetHeight+330;
 		  
 		    var currentRow = Math.floor(scrollY / rowHeight);
 		    
 			//console.log("scroll 위치 : ",scrollY);
-		   // console.log("rowHeight 위치 : ",rowHeight)
-		   // console.log("currentRow 위치 : ",currentRow)
+		  	//console.log("rowHeight 위치 : ",rowHeight)
+		   //console.log("currentRow 위치 : ",currentRow)
 		    return currentRow;
 		}
+/* window.addEventListener("scroll", function () {
+	var gridItem = document.querySelector(".grid-item");
+    var rowHeight = gridItem.offsetHeight+300;
+  
+    var currentRow = Math.floor(scrollY / rowHeight);
+    
+	//console.log("scroll 위치 : ",scrollY);
+   // console.log("rowHeight 위치 : ",rowHeight)
+   console.log("currentRow 위치 : ",currentRow)
+});  */
 		function getNonNullLength(arr) {
 		    var count = 0;
 		    for (var i = 0; i < arr.length; i++) {
@@ -866,7 +1057,7 @@ ul li {
 		    }
 		    return count;
 		}
-		/* <img id="guide-icon" src="resources/ableSDImage/guide.png" alt="guide"> */
+		
 		$(document).ready(function() { // doc ready start
 			
 			
@@ -889,10 +1080,88 @@ ul li {
     
     
   });//doc ready end
+  
+
+  // 요소의 높이를 동적으로 조정하고 padding-top을 추가하는 함수
+  function updatePaddingTop() {
+      const listSpanElements = document.querySelectorAll(".ul_section3 .list_span");
+      listSpanElements.forEach(spanElement => {
+          const height = spanElement.clientHeight;
+          if (height >= 36) { // list_span 요소의 높이가 36px 이상인 경우
+              spanElement.closest("li").style.paddingBottom = "18px"; // 가장 가까운 부모 li에 padding-top 추가
+          } else {
+              spanElement.closest("li").style.paddingBottom = "0"; // 그렇지 않은 경우 padding-top 제거
+          }
+      });
+  }
+
+  // 페이지가 로드될 때 초기화 함수 호출
+  document.addEventListener("DOMContentLoaded", function () {
+      updatePaddingTop(); // 초기화 함수 호출
+  });
+
+  // 윈도우 리사이즈 이벤트에 대한 리스너 추가
+  window.addEventListener("resize", updatePaddingTop);
 		
 		
-		
-	</script>
+  // 동적으로 그리드 컨테이너의 넓이를 그리드 항목과 동일하게 설정
+  function setGridContainerWidth() {
+      const gridItemheaders = document.querySelectorAll(".grid-item-header");
+      const gridItems = document.querySelectorAll(".grid-item");
+
+      for (let i = 0; i < gridItems.length; i++) {
+    	    const gridItem = gridItems[i];
+    	    const itemWidth = window.getComputedStyle(gridItem).getPropertyValue("width");
+    	    if (gridItemheaders[i]) {
+                gridItemheaders[i].style.width = itemWidth;
+            }
+    	    
+    }
+     
+  }
+
+  // 페이지가 로드될 때 초기화 함수 호출
+  document.addEventListener("DOMContentLoaded", function () {
+      setGridContainerWidth(); // 초기화 함수 호출
+  });
+
+  // 윈도우 리사이즈 이벤트에 대한 리스너 추가
+  window.addEventListener("resize", setGridContainerWidth);		
+
+  
+//폰트 크기를 동적으로 조절하는 함수
+  /* function adjustFontSize() {
+      const gridItems = document.querySelectorAll(".grid-item-header");
+
+      gridItems.forEach(gridItem => {
+          // 폰트 크기를 조절할 로직을 여기에 추가
+          const currentWidth = window.innerWidth;
+          if (currentWidth >= 1807) {
+              gridItem.style.fontSize = "22px"; // 화면 폭이 768px 미만이면 폰트 크기 14px
+          } else if (currentWidth < 1807) {
+              gridItem.style.fontSize = "21px"; // 화면 폭이 768px 미만이면 폰트 크기 14px
+          } else if(currentWidth < 1733){
+              gridItem.style.fontSize = "20px"; // 그 외의 경우 폰트 크기 16px
+          } else if(currentWidth < 1660){
+              gridItem.style.fontSize = "19px"; // 그 외의 경우 폰트 크기 16px
+          } else if(currentWidth < 1588){
+              gridItem.style.fontSize = "18px"; // 그 외의 경우 폰트 크기 16px
+          }
+      });
+  }
+
+  // 페이지가 로드될 때 초기화 함수 호출
+  document.addEventListener("DOMContentLoaded", function () {
+      adjustFontSize(); // 초기화 함수 호출
+  });
+
+  // 윈도우 리사이즈 이벤트에 대한 리스너 추가
+  window.addEventListener("resize", adjustFontSize); */
+  
+  
+  
+  
+ </script>
 
 
 </body>
